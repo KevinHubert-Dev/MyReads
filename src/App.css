@@ -166,7 +166,15 @@ body, .app {
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  transition: 0.2s all;
 }
+
+.book-cover:hover {
+  box-shadow: 0 6px 10px rgba(35, 45, 90, 0.28), 0 6px 10px rgba(35, 45, 90, 0.36);
+  background: #eee;
+  transition: 0.3s all;
+}
+
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;
