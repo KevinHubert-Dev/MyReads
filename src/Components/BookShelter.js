@@ -17,7 +17,7 @@ class BookShelf extends Component {
                 <Book
                   title={book.title}
                   authors={book.authors}
-                  imageUrl={book.imageUrl}
+                  imageUrl={book.imageLinks.thumbnail}
                 />
               ))
             }
