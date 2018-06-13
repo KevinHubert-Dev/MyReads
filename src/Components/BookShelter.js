@@ -6,7 +6,7 @@ import Book from './Book'
 class BookShelf extends Component {
 
   render() {
-    let { title, books } = this.props
+    let { title, books, changeStatus } = this.props
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{title}</h2>
@@ -17,20 +17,24 @@ class BookShelf extends Component {
                 <Book
                   title={book.title}
                   authors={book.authors}
-                  imageUrl={book.imageLinks.thumbnail}
-                />
-              ))
-            }
+                  imageLinks={book.imageLinks.thumbnail}
+                  status={book.shelf}
+                  changeStatus={(newStatus) => changeStatus(book, newStatus)}
+            />
+          ))
+        }
           </ol>
         </div>
       </div>
     )
   }
+
 }
 
 BookShelf.propTypes = {
   title: PropTypes.string.isRequired,
-  books: PropTypes.array.isRequired
+  books: PropTypes.array.isRequired,
+  changeStatus: PropTypes.func.isRequired
 }
 
 export default BookShelf
