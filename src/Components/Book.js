@@ -1,35 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import MoveBook from './MoveBook'
 
 class Book extends React.Component {
-  
+
   render() {
-    let { title, authors, imageUrl } = this.props
+    let { title, authors, imageLinks, status, changeStatus } = this.props
+    
+    /* Default values */
+    if (!title) title = "Title not found";
+    if (!authors) authors = ["No author found"];
+    if (!status) status = "none"
+    if (!imageLinks) imageLinks = "http://via.placeholder.com/128x193"
+
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${imageUrl}")` }}></div>
-          <div className="book-shelf-changer">
-            <select>
-              <option value="move" disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
-          </div>
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${imageLinks}")` }}></div>
+          <MoveBook
+            currStatus={status}
+            changeStatus={changeStatus}
+          />
         </div>
         <div className="book-title">{title}</div>
-        <div className="book-authors">{authors}</div>
+        <div className="book-authors">{authors.join(', ')}</div>
       </div>
     )
   }
+
 }
 
 Book.propTypes = {
   title: PropTypes.string.isRequired,
-  authors: PropTypes.string.isRequired, /* Normally an array of strings. To have each author separated */
-  imageUrl: PropTypes.string.isRequired
+  authors: PropTypes.array.isRequired, /* Normally an array of strings. To have each author separated */
+  imageLinks: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  changeStatus: PropTypes.func.isRequired,
 }
 
 export default Book
