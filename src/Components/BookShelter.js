@@ -13,16 +13,21 @@ class BookShelf extends Component {
         <div className="bookshelf-books">
           <ol className="books-grid">
             {
-              books.map(book => (
-                <Book
-                  title={book.title}
-                  authors={book.authors}
-                  imageLinks={book.imageLinks.thumbnail}
-                  status={book.shelf}
-                  changeStatus={(newStatus) => changeStatus(book, newStatus)}
-            />
-          ))
-        }
+              books.map(book => {
+                if (!book.imageLinks || !book.imageLinks.thumbnail)
+                  book.imageLinks = { thumbnail: "http://via.placeholder.com/128x193" }
+                  
+                return (
+                  <Book
+                    title={book.title}
+                    authors={book.authors}
+                    imageLinks={book.imageLinks.thumbnail}
+                    status={book.shelf}
+                    changeStatus={(newStatus) => changeStatus(book, newStatus)}
+                  />
+                )
+              })
+            }
           </ol>
         </div>
       </div>

@@ -20,6 +20,9 @@ class SearchBooksResult extends React.Component {
           {
             this.props.books && this.props.books.length > 0 ? (
               this.props.books.map(book => {
+
+                if (!book.imageLinks || !book.imageLinks.thumbnail)
+                  book.imageLinks = { thumbnail: "http://via.placeholder.com/128x193" }
                 return (
                   <Book
                     title={book.title}
