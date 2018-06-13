@@ -21,7 +21,7 @@ class SearchBooks extends React.Component {
   /* 
    * 
    */
-  searchSubmit = () => {
+  searchChanged = () => {
     this.setState({ searched: true })
 
     BooksAPI.search(this.state.searchQuery)
@@ -33,11 +33,6 @@ class SearchBooks extends React.Component {
       })
   }
 
-  getRandomSearchSuggestion = () => {
-    const suggestionArr = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS']
-    return suggestionArr[Math.floor(Math.random() * (suggestionArr.length - 1))];
-  }
-
   /**
    * NOTES: The search from BooksAPI is limited to a particular set of search terms.
    * You can find these search terms here:
@@ -47,11 +42,12 @@ class SearchBooks extends React.Component {
    */
   render() {
     return (
+      
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to='/' />
           <div className="search-books-input-wrapper">
-            <form onSubmit={(e) => { e.preventDefault(); this.searchSubmit(); }}>
+            <form onChange={() => { this.searchChanged(); }}>
               <input
                 type="text"
                 placeholder="Search by title or author"
