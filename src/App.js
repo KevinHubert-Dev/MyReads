@@ -2,7 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Book from './Components/Book'
-import BookShelter from './Components/BookShelter'
+import BookShelf from './Components/BookShelf'
 import Header from './Components/Header'
 import SearchBooks from './Components/SearchBooks'
 import { Route, Link } from 'react-router-dom'
@@ -55,17 +55,17 @@ class BooksApp extends React.Component {
             <div className="list-books">
               <div className="list-books-content">
                 <div>
-                  <BookShelter
+                  <BookShelf
                     title='Books i read'
                     books={booksCurrRead}
                     changeStatus={this.changeBookStatus}
                   />
-                  <BookShelter
+                  <BookShelf
                     title='Books i want to read'
                     books={booksWantRead}
                     changeStatus={this.changeBookStatus}
                   />
-                  <BookShelter
+                  <BookShelf
                     title="Books i've read"
                     books={booksRead}
                     changeStatus={this.changeBookStatus}
