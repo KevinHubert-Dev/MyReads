@@ -24,14 +24,13 @@ class SearchBooksResult extends React.Component {
                     imageLinks={book.imageLinks.thumbnail}
                     status={book.shelf}
                     changeStatus={(newStatus) => {
-                      console.log(book.title + " changed to " + newStatus)
                       this.props.changeStatus(book, newStatus)
                     }}
                   />
                 )
               })
             ) : ( /* No books found */
-                this.props.searched ? (
+                this.props.searchQuery ? (
                   <div>
                     <p>Oops. We have no books for you search for '{this.props.searchQuery}'</p>
                     {/* <p>You could search for '{this.getRandomSearchSuggestion()}'</p> */}
@@ -49,7 +48,6 @@ class SearchBooksResult extends React.Component {
 
 SearchBooksResult.propTypes = {
   books: PropTypes.array.isRequired,
-  searched: PropTypes.bool.isRequired,
   searchQuery: PropTypes.string.isRequired
 }
 

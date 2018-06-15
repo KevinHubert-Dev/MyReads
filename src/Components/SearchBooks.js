@@ -8,7 +8,6 @@ class SearchBooks extends React.Component {
 
   state = {
     matchingBooks: [],
-    searched: false,
     searchQuery: ''
   }
 
@@ -17,23 +16,20 @@ class SearchBooks extends React.Component {
    */
   queryChange = (value) => {
     this.setState({ searchQuery: value })
-    this.searchChanged()
-  }
+    if (value.length === 0) {
+      this.setState({ matchingBooks: [] })
+      return
+    }
 
-  /* 
-   * 
-   */
-  searchChanged = () => {
-    this.setState({ searched: true })
-
-    BooksAPI.search(this.state.searchQuery)
+    BooksAPI.search(value)
       .then(books => {
-
-        this.mergeFoundAndShelfBooks(books);
-        // this.setState({ matchingBooks: books })
+        if (books.error && books.error === "empty query") {
+          this.setState({ matchingBooks: [] })
+        } else
+          this.mergeFoundAndShelfBooks(books);
       })
       .catch(err => {
-
+        console.error(err);
       })
   }
 
@@ -41,8 +37,7 @@ class SearchBooks extends React.Component {
 
     let result = foundBooks.map(foundBook => {
       let alreadyInShelfBook = this.props.booksInShelf.find(book => {
-        console.log(foundBook.id + " - " + book.id + " - " + foundBook.title)
-        return book.id === foundBook.id
+         return book.id === foundBook.id
       })
       foundBook.shelf = alreadyInShelfBook ? alreadyInShelfBook.shelf : 'none';
 
@@ -51,13 +46,7 @@ class SearchBooks extends React.Component {
     this.setState({ matchingBooks: result })
   }
 
-  /**
-   * NOTES: The search from BooksAPI is limited to a particular set of search terms.
-   * You can find these search terms here:
-   * https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-   * However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-   * you don't find a specific author or title. Every search is limited by search terms.
-   */
+
   render() {
     return (
 
@@ -78,7 +67,6 @@ class SearchBooks extends React.Component {
 
         <SearchBooksResult
           books={this.state.matchingBooks}
-          searched={this.state.searched}
           searchQuery={this.state.searchQuery}
           changeStatus={this.props.changeStatus}
         />
