@@ -1,5 +1,4 @@
 import React from 'react'
-import Book from './Book'
 import * as BooksAPI from '../BooksAPI'
 import SearchBooksResult from './SearchBooksResult'
 import { Link } from 'react-router-dom'
@@ -11,8 +10,9 @@ class SearchBooks extends React.Component {
     searchQuery: ''
   }
 
-  /* 
-   * 
+  /** @description Stores the current searchQuery in the state. And executes a serverside
+   *  search for books within the BooksAPI and updates the matchingBooks in the state.
+   *  @param {string} value Value by which the user wants to search for books.
    */
   queryChange = (value) => {
     this.setState({ searchQuery: value })
@@ -33,11 +33,15 @@ class SearchBooks extends React.Component {
       })
   }
 
+  /** @description Checks if a found book is already assigned to a shelf and sets
+   *  the 'shelf'-property of the book if it is.
+   *  @param {array} foundBooks Array of Books which where found within the search.
+   */
   mergeFoundAndShelfBooks = (foundBooks) => {
 
     let result = foundBooks.map(foundBook => {
       let alreadyInShelfBook = this.props.booksInShelf.find(book => {
-         return book.id === foundBook.id
+        return book.id === foundBook.id
       })
       foundBook.shelf = alreadyInShelfBook ? alreadyInShelfBook.shelf : 'none';
 
@@ -46,10 +50,10 @@ class SearchBooks extends React.Component {
     this.setState({ matchingBooks: result })
   }
 
-
+  /**  @description Render method of the SearchBooks-Component
+   */
   render() {
     return (
-
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to='/' />

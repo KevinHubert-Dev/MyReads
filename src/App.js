@@ -1,11 +1,10 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
+import { Route, Link } from 'react-router-dom'
 import './App.css'
-import Book from './Components/Book'
+import * as BooksAPI from './BooksAPI'
 import BookShelf from './Components/BookShelf'
 import Header from './Components/Header'
 import SearchBooks from './Components/SearchBooks'
-import { Route, Link } from 'react-router-dom'
 
 class BooksApp extends React.Component {
 
@@ -13,6 +12,9 @@ class BooksApp extends React.Component {
     books: []
   }
 
+
+  /**  @description Load currently saved Books from server.  
+   */
   componentDidMount() {
     BooksAPI.getAll()
       .then(books => {
@@ -24,22 +26,31 @@ class BooksApp extends React.Component {
       })
   }
 
+
+  /** @description Updates the BookShelf in the state and at the serverside within the BooksAPI.  
+   *  @param {object} bookToChange Book which shelf should get changed.  
+   *  @param {string} newStatus New shelf for the book. Should be one of the following: 'currentlyReading', 'wantToRead', 'read' or 'none'.  
+   */
   changeBookStatus = (bookToChange, newStatus) => {
 
-    console.log(bookToChange.title + " changed to " + newStatus)
     /* Remove old book from shelf */
     this.setState({ books: this.state.books.filter(book => book.id !== bookToChange.id) })
-    BooksAPI.update(bookToChange, newStatus)
-      .then(book => {
 
+    /* Update shelf at serverside */
+    BooksAPI.update(bookToChange, newStatus)
+      .catch(err => {
+        console.error(err)
       })
 
-    /* Change book.shelf-property and add back again. */
+    /* Change book.shelf-property and add it. */
     bookToChange.shelf = newStatus
     this.setState((currState) => ({ books: [...currState.books, bookToChange] }))
-
   }
 
+
+  /** @description Render method of the App-Component, which controls the routes
+   *  and base components of the entire application. 
+   */
   render() {
 
     let booksCurrRead = this.state.books.filter(book => book.shelf === "currentlyReading")

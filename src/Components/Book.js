@@ -4,10 +4,12 @@ import MoveBook from './MoveBook'
 
 class Book extends React.Component {
 
+  /** @description Render method of the Book-Component.
+   */
   render() {
     let { title, authors, imageLinks, status, changeStatus } = this.props
     
-    /* Default values */
+    /* Set default values if not given */
     if (!title) title = "Title not found";
     if (!authors) authors = ["No author found"];
     if (!status) status = "none"

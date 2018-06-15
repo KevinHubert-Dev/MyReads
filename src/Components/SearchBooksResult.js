@@ -1,13 +1,13 @@
 import React from 'react'
 import Book from './Book'
-import * as BooksAPI from '../BooksAPI'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 
 class SearchBooksResult extends React.Component {
 
 
-
+  /** @description Render method of the SearchBooksResult-Component, which is responsible
+   *  to render all books which where found by the SearchBook-component.
+   */
   render() {
     return (
       <div className="search-books-results">
@@ -33,7 +33,6 @@ class SearchBooksResult extends React.Component {
                 this.props.searchQuery ? (
                   <div>
                     <p>Oops. We have no books for you search for '{this.props.searchQuery}'</p>
-                    {/* <p>You could search for '{this.getRandomSearchSuggestion()}'</p> */}
                   </div>
                 ) : (
                     <p>Search for books.</p>

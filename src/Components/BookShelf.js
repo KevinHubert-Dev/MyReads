@@ -5,6 +5,9 @@ import Book from './Book'
 
 class BookShelf extends Component {
 
+  /** @description Render method of the BookShelf-Component, which is responsible
+   *  to render all books which are assigned to the shelf.
+   */
   render() {
     let { title, books, changeStatus } = this.props
     return (
