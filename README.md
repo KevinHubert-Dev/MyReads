@@ -10,7 +10,7 @@ For more informations visit [Udacity.com - React-Nanodegree](https://de.udacity.
 
 ### Clone & Install
 ``` bash
-git clone <RepositoryURL>
+git clone https://github.com/KevinHubert-Dev/MyReads.git
 cd <Folder>
 npm install --production
 # This can take a while ... ☕️
@@ -19,7 +19,7 @@ npm install --production
 OR
 
 ``` bash
-npm install <RepositoryURL>
+npm install https://github.com/KevinHubert-Dev/MyReads.git
 # This can take a while ... ☕️
 ```
 
