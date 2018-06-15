@@ -18,20 +18,25 @@ class BooksApp extends React.Component {
       .then(books => {
         this.setState({ books: books })
       })
+      .catch(err => {
+        this.setState({ books: [] })
+        console.error(err);
+      })
   }
 
   changeBookStatus = (bookToChange, newStatus) => {
+
+    console.log(bookToChange.title + " changed to " + newStatus)
     /* Remove old book from shelf */
-    this.setState({ books: this.state.books.filter(book => book !== bookToChange) })
+    this.setState({ books: this.state.books.filter(book => book.id !== bookToChange.id) })
     BooksAPI.update(bookToChange, newStatus)
       .then(book => {
-        console.log(book);
+
       })
 
     /* Change book.shelf-property and add back again. */
     bookToChange.shelf = newStatus
     this.setState((currState) => ({ books: [...currState.books, bookToChange] }))
-
 
   }
 
@@ -44,8 +49,8 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
 
-        <Route exact path='/search' component={() =>
-          <SearchBooks changeStatus={this.changeBookStatus} />
+        <Route exact path='/search' render={() =>
+          <SearchBooks booksInShelf={this.state.books} changeStatus={this.changeBookStatus} />
         }
         />
 
@@ -56,17 +61,17 @@ class BooksApp extends React.Component {
               <div className="list-books-content">
                 <div>
                   <BookShelf
-                    title='Books i read'
+                    title='Books I currently reading'
                     books={booksCurrRead}
                     changeStatus={this.changeBookStatus}
                   />
                   <BookShelf
-                    title='Books i want to read'
+                    title='Books I want to read'
                     books={booksWantRead}
                     changeStatus={this.changeBookStatus}
                   />
                   <BookShelf
-                    title="Books i've read"
+                    title="Books I've read"
                     books={booksRead}
                     changeStatus={this.changeBookStatus}
                   />

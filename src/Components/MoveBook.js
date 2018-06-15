@@ -11,7 +11,7 @@ class MoveBook extends React.Component {
 
     return (
       <div className="book-shelf-changer">
-        <select value={this.props.currStatus} onChange={(event) => { this.changeStatus(event.target.value) }}>
+        <select value={this.props.currStatus} onChange={(event) => { event.preventDefault(); this.changeStatus(event.target.value) }}>
           <option value="move" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
