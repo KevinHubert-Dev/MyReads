@@ -5,6 +5,7 @@ import SearchBooksResult from './SearchBooksResult'
 import { Link } from 'react-router-dom'
 
 class SearchBooks extends React.Component {
+
   state = {
     matchingBooks: [],
     searched: false,
@@ -16,6 +17,7 @@ class SearchBooks extends React.Component {
    */
   queryChange = (value) => {
     this.setState({ searchQuery: value })
+    this.searchChanged()
   }
 
   /* 
@@ -26,11 +28,27 @@ class SearchBooks extends React.Component {
 
     BooksAPI.search(this.state.searchQuery)
       .then(books => {
-        this.setState({ matchingBooks: books })
+
+        this.mergeFoundAndShelfBooks(books);
+        // this.setState({ matchingBooks: books })
       })
       .catch(err => {
-        console.error(err)
+
       })
+  }
+
+  mergeFoundAndShelfBooks = (foundBooks) => {
+
+    let result = foundBooks.map(foundBook => {
+      let alreadyInShelfBook = this.props.booksInShelf.find(book => {
+        console.log(foundBook.id + " - " + book.id + " - " + foundBook.title)
+        return book.id === foundBook.id
+      })
+      foundBook.shelf = alreadyInShelfBook ? alreadyInShelfBook.shelf : 'none';
+
+      return foundBook
+    })
+    this.setState({ matchingBooks: result })
   }
 
   /**
@@ -42,12 +60,12 @@ class SearchBooks extends React.Component {
    */
   render() {
     return (
-      
+
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to='/' />
           <div className="search-books-input-wrapper">
-            <form onChange={() => { this.searchChanged(); }}>
+            <form>
               <input
                 type="text"
                 placeholder="Search by title or author"
