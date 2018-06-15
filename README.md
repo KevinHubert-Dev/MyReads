@@ -11,7 +11,7 @@ For more informations visit [Udacity.com - React-Nanodegree](https://de.udacity.
 ### Clone & Install
 ``` bash
 git clone https://github.com/KevinHubert-Dev/MyReads.git
-cd <Folder>
+cd MyReads
 npm install --production
 # This can take a while ... ☕️
 ```
