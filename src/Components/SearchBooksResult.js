@@ -5,18 +5,19 @@ import PropTypes from 'prop-types'
 class SearchBooksResult extends React.Component {
 
 
-  /** @description Render method of the SearchBooksResult-Component, which is responsible
-   *  to render all books which where found by the SearchBook-component.
+  /**
+   * @description Render method of the SearchBooksResult-Component, which is responsible
+   * to render all books which where found by the SearchBook-component.
    */
   render() {
     return (
-      <div className="search-books-results">
-        <ol className="books-grid">
+      <div className='search-books-results'>
+        <ol className='books-grid'>
           {
             this.props.books && this.props.books.length > 0 ? (
               this.props.books.map(book => {
                 if (!book.imageLinks || !book.imageLinks.thumbnail)
-                  book.imageLinks = { thumbnail: "http://via.placeholder.com/128x193" }
+                  book.imageLinks = { thumbnail: 'http://via.placeholder.com/128x193' }
                 return (
                   <Book
                     title={book.title}

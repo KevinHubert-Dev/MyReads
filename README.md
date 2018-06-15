@@ -61,6 +61,6 @@ $ node ./src/index.js
 
 Made with 💗 & 💻 by Kevin H.
 
-You can find me here:
+More about me can be found here
 :octocat: [GitHub](https://github.com/KevinHubert-Dev) 
 🏠 [Homepage](http://Kevin-Hubert.de/)

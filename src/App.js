@@ -53,12 +53,12 @@ class BooksApp extends React.Component {
    */
   render() {
 
-    let booksCurrRead = this.state.books.filter(book => book.shelf === "currentlyReading")
-    let booksWantRead = this.state.books.filter(book => book.shelf === "wantToRead")
-    let booksRead = this.state.books.filter(book => book.shelf === "read")
+    let booksCurrRead = this.state.books.filter(book => book.shelf === 'currentlyReading')
+    let booksWantRead = this.state.books.filter(book => book.shelf === 'wantToRead')
+    let booksRead = this.state.books.filter(book => book.shelf === 'read')
 
     return (
-      <div className="app">
+      <div className='app'>
 
         <Route exact path='/search' render={() =>
           <SearchBooks booksInShelf={this.state.books} changeStatus={this.changeBookStatus} />
@@ -68,8 +68,8 @@ class BooksApp extends React.Component {
         <Route exact path='/' render={() =>
           <div>
             <Header title='Kevin Hubert - Books' />
-            <div className="list-books">
-              <div className="list-books-content">
+            <div className='list-books'>
+              <div className='list-books-content'>
                 <div>
                   <BookShelf
                     title='Books I currently reading'
@@ -88,7 +88,7 @@ class BooksApp extends React.Component {
                   />
                 </div>
               </div>
-              <div className="open-search">
+              <div className='open-search'>
                 <Link to='/search' />
               </div>
             </div>

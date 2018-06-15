@@ -10,9 +10,10 @@ class SearchBooks extends React.Component {
     searchQuery: ''
   }
 
-  /** @description Stores the current searchQuery in the state. And executes a serverside
-   *  search for books within the BooksAPI and updates the matchingBooks in the state.
-   *  @param {string} value Value by which the user wants to search for books.
+  /**
+   * @description Stores the current searchQuery in the state. And executes a serverside
+   * search for books within the BooksAPI and updates the matchingBooks in the state.
+   * @param {string} value Value by which the user wants to search for books.
    */
   queryChange = (value) => {
     this.setState({ searchQuery: value })
@@ -23,7 +24,7 @@ class SearchBooks extends React.Component {
 
     BooksAPI.search(value)
       .then(books => {
-        if (books.error && books.error === "empty query") {
+        if (books.error && books.error === 'empty query') {
           this.setState({ matchingBooks: [] })
         } else
           this.mergeFoundAndShelfBooks(books);
@@ -33,9 +34,10 @@ class SearchBooks extends React.Component {
       })
   }
 
-  /** @description Checks if a found book is already assigned to a shelf and sets
-   *  the 'shelf'-property of the book if it is.
-   *  @param {array} foundBooks Array of Books which where found within the search.
+  /**
+   * @description Checks if a found book is already assigned to a shelf and sets
+   * the 'shelf'-property of the book if it is.
+   * @param {array} foundBooks Array of Books which where found within the search.
    */
   mergeFoundAndShelfBooks = (foundBooks) => {
 
@@ -50,18 +52,19 @@ class SearchBooks extends React.Component {
     this.setState({ matchingBooks: result })
   }
 
-  /**  @description Render method of the SearchBooks-Component
+  /**
+   * @description Render method of the SearchBooks-Component
    */
   render() {
     return (
-      <div className="search-books">
-        <div className="search-books-bar">
-          <Link className="close-search" to='/' />
-          <div className="search-books-input-wrapper">
+      <div className='search-books'>
+        <div className='search-books-bar'>
+          <Link className='close-search' to='/' />
+          <div className='search-books-input-wrapper'>
             <form>
               <input
-                type="text"
-                placeholder="Search by title or author"
+                type='text'
+                placeholder='Search by title or author'
                 value={this.state.searchQuery}
                 onChange={(event) => this.queryChange(event.target.value)}
               />
