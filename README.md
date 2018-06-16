@@ -13,24 +13,12 @@ For more informations visit [Udacity.com - React-Nanodegree](https://de.udacity.
 git clone https://github.com/KevinHubert-Dev/MyReads.git
 cd MyReads
 npm install
-# This can take a while ... ☕️
 ```
-
-OR
-
-``` bash
-npm install https://github.com/KevinHubert-Dev/MyReads.git
-# This can take a while ... ☕️
-```
-
+This can take a while ... ☕️
 
 ### Start
 ```
 npm start
-```
-OR
-```
-node ./src/index.js
 ```
 
 ## Screenshots
