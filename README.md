@@ -12,7 +12,7 @@ For more informations visit [Udacity.com - React-Nanodegree](https://de.udacity.
 ``` bash
 git clone https://github.com/KevinHubert-Dev/MyReads.git
 cd MyReads
-npm install --production
+npm install
 # This can take a while ... ☕️
 ```
 
@@ -26,11 +26,11 @@ npm install https://github.com/KevinHubert-Dev/MyReads.git
 
 ### Start
 ```
-$ npm start
+npm start
 ```
 OR
 ```
-$ node ./src/index.js
+node ./src/index.js
 ```
 
 ## Screenshots
