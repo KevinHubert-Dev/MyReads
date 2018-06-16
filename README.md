@@ -1,8 +1,8 @@
 # MyReads - (ReactJS)
 
 React based Web-Application to search and manage books. 
-
 The application is part of the React-Nanodegree-Course by Udacity.
+
 For more informations visit [Udacity.com - React-Nanodegree](https://de.udacity.com/course/react-nanodegree--nd019)
 
 
@@ -24,21 +24,21 @@ npm start
 ## Screenshots
 
 ![Overview](/screenshots/img1.jpg?raw=true)
-![Overview](/screenshots/img2.jpg?raw=true)
-![Overview](/screenshots/img3.jpg?raw=true)
+
+![Search Books](/screenshots/img2.jpg?raw=true)
+
+
+## Features
+- Add books to "Currently Read"-shelf
+- Add books to "Want to read"-shelf
+- Add books to "Read"-shelf
+- Remove books from shelf.
+- Search for books
+- Add searched books to shelf
 
 
 ## Search Terms
 'Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'
-
-
-## Features
-- Add books to "Currently Read"-Shelf
-- Add books to "Want to read"-Shelf
-- Add books to "Read"-Shelf
-- Remove books from all shelfs.
-- Search for books
-- Add found books to shelf
 
 
 ## ToDo
@@ -50,5 +50,5 @@ npm start
 Made with 💗 & 💻 by Kevin H.
 
 More about me can be found here
-:octocat: [GitHub](https://github.com/KevinHubert-Dev) 
-🏠 [Homepage](http://Kevin-Hubert.de/)
+- :octocat: [GitHub](https://github.com/KevinHubert-Dev) 
+- 🏠 [Homepage](http://Kevin-Hubert.de/)
